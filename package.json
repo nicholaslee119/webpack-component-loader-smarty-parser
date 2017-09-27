@@ -1,0 +1,28 @@
+{
+  "name": "webpack-component-loader-smarty-parser",
+  "version": "0.0.1",
+  "description": "a package to offer injector and extractor for webpack-component-loader ecosystem",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicholaslee119/webpack-component-loader-smarty-parser.git"
+  },
+  "keywords": [
+    "webpack-component-loader"
+  ],
+  "author": "nicholas lee",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nicholaslee119/webpack-component-loader-smarty-parser/issues"
+  },
+  "homepage": "https://github.com/nicholaslee119/webpack-component-loader-smarty-parser#readme",
+  "devDependencies": {
+    "babel-jest": "^21.2.0",
+    "babel-preset-es2015": "^6.24.1",
+    "jest": "^21.2.0",
+    "regenerator-runtime": "^0.11.0"
+  }
+}
