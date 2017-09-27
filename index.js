@@ -5,7 +5,7 @@ function createAssetTags(assetsURL) {
   return tags;
 }
 
-export function extractor(source) {
+exports.extractor = function(source) {
   var included = source.match(/\{include .*\}/g);
   var fileREG = /file\s?=\s?["'].*?["']/;
   var quotationREG = /["'].*?["']/;
@@ -19,7 +19,7 @@ export function extractor(source) {
   return res;
 }
 
-export function injector(template, assetsURL) {
+exports.injector = function(template, assetsURL) {
   const htmlRegExp = /(<html[^>]*>)/i;
   const headRegExp = /(<\/head\s*>)/i;
   const bodyRegExp = /(<\/body\s*>)/i;
