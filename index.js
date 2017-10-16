@@ -1,3 +1,6 @@
+const posthtml = require('posthtml');
+const attrsPlugin = require('posthtml-extend-attrs');
+
 function createAssetTags(assetsURL) {
   const tags = {};
   if (assetsURL.js) tags.js = `<script src="${assetsURL.js}"></script>`;
@@ -46,3 +49,21 @@ exports.injector = function(template, assetsURL) {
   }
   return injected;
 }
+
+exports.addScopeAttr = function(template, component) {
+  if (!component.scopedSelectors) return template;
+  const attrsTree = {};
+  component.scopedSelectors.forEach((scopedSelector) => {
+    attrsTree[`.${scopedSelector}`] = {};
+    attrsTree[`.${scopedSelector}`][`data-s-${component.scopeID}`] = '';
+  });
+  return new Promise((resolve) => {
+    posthtml([attrsPlugin({
+      attrsTree,
+    })])
+      .process(template)
+      .then((result) => {
+        resolve(result.html);
+      });
+  });
+};
