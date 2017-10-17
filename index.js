@@ -22,10 +22,15 @@ exports.extractor = function(source) {
   return res;
 }
 
-exports.injector = function(template, assetsURL) {
+exports.injector = function (template, component, buildOption) {
   const htmlRegExp = /(<html[^>]*>)/i;
   const headRegExp = /(<\/head\s*>)/i;
   const bodyRegExp = /(<\/body\s*>)/i;
+
+  const assetsURL = {};
+  assetsURL.js = `${buildOption.publicPath}${component.name}.js`;
+  assetsURL.css = `${buildOption.publicPath}${component.name}.css`
+
   const assetTags = createAssetTags(assetsURL);
   let injected = template;
 
